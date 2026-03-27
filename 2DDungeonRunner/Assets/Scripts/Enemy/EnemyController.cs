@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IDamageable
 {
     [SerializeField] private EnemyType enemyType;
-    [SerializeField] private EnemyData data;  
-
+    [SerializeField] public EnemyData data;
+    [SerializeField] private AIMovement _aiMovement;
     private Enemy _enemy;
     private void Awake()
     {
@@ -13,6 +13,34 @@ public class EnemyController : MonoBehaviour
         else if (enemyType == EnemyType.Boss)
             _enemy = new Boss(data);
     }
+
+    private void Start()
+    {
+        _aiMovement.SetSpeed(data.speed);
+    }
+
+    public void Attack(IDamageable target)
+    {
+        _enemy.Attack(target);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _enemy.TakeDamage(damage);
+        Debug.Log($"{enemyType} health: {_enemy.CurrentHealth}");
+
+        if (_enemy.IsDead())
+        {
+            Debug.Log($"{enemyType} is dead!");
+            Destroy(gameObject);
+        }
+    }
+
+    public bool IsDead()
+    {
+        return _enemy.IsDead();
+    }
+
 }
 public enum EnemyType { Minion, Boss }
 
