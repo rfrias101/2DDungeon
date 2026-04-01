@@ -1,9 +1,14 @@
 using UnityEngine;
 
-public class Chest : MonoBehaviour, IInteractable
+public class Chest : MonoBehaviour, IOpenable
 {
+    public virtual void Open()
+    {
+        Debug.Log("Chest opened!");
+    }
+
     public void Interact()
     {
-        Debug.Log("Chest has been opened!");
+        Open();
     }
 }

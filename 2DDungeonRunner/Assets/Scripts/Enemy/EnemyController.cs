@@ -32,6 +32,9 @@ public class EnemyController : MonoBehaviour, IDamageable
         if (_enemy.IsDead())
         {
             Debug.Log($"{enemyType} is dead!");
+            RoomManager roomManager = FindObjectOfType<RoomManager>();
+            if (roomManager != null)
+                roomManager.OnEnemyDied(gameObject);
             Destroy(gameObject);
         }
     }
