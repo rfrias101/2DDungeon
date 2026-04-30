@@ -1,5 +1,5 @@
 using UnityEngine;
-public class Key : MonoBehaviour, IPickable
+public class Key : MonoBehaviour, IPickable, IInteractable
 {
     public virtual void Pickup()
     {

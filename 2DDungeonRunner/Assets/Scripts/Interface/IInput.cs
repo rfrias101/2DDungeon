@@ -5,5 +5,6 @@ public interface IInput
     bool GetInteractPressed();
     bool GetAttackPressed();
     bool GetSwitchWeaponPressed();
+    bool GetConsumePressed();
 
 }

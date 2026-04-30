@@ -1,15 +1,11 @@
 using UnityEngine;
-public class Potion : MonoBehaviour, IPickable, IConsumable
+public class Potion : MonoBehaviour, IPickable, IConsumable, IInteractable
 {
-    public virtual void Consume()
-    {
-        Debug.Log("Potion consumed!");
-    }
+    public virtual void Consume() { }
 
     public virtual void Pickup()
     {
         Consume();
-        Destroy(gameObject);
     }
 
     public void Interact()

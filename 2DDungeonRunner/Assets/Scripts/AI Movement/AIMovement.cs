@@ -6,14 +6,17 @@ public class AIMovement : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float stopDistance = 2.5f;
     private Rigidbody2D rb;
-    void Start()
+
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.stoppingDistance = stopDistance;
-
         rb = GetComponent<Rigidbody2D>();
+    }
+    void Start()
+    {
         //rb.constraints = RigidbodyConstraints2D.FreezePosition;
 
         playerTransform = GameObject.FindWithTag("Player").transform;

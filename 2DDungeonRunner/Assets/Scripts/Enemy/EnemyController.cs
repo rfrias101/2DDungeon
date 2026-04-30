@@ -5,9 +5,15 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] private EnemyType enemyType;
     [SerializeField] public EnemyData data;
     [SerializeField] private AIMovement _aiMovement;
+
+    private Droppable _droppable;
+    private DamageFlash _dmgflash;
     private Enemy _enemy;
     private void Awake()
     {
+        _dmgflash = GetComponent<DamageFlash>();
+        _droppable = GetComponent<Droppable>();
+
         if (enemyType == EnemyType.Minion)
             _enemy = new Minion(data);
         else if (enemyType == EnemyType.Boss)
@@ -27,6 +33,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         _enemy.TakeDamage(damage);
+        _dmgflash?.Flash();
         Debug.Log($"{enemyType} health: {_enemy.CurrentHealth}");
 
         if (_enemy.IsDead())
@@ -35,6 +42,7 @@ public class EnemyController : MonoBehaviour, IDamageable
             RoomManager roomManager = FindObjectOfType<RoomManager>();
             if (roomManager != null)
                 roomManager.OnEnemyDied(gameObject);
+            _droppable?.DropItems();
             Destroy(gameObject);
         }
     }

@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour, IInput
     private bool _interactPressed;
     private bool _attackPressed;
     private bool _switchWeaponPressed;
+    private bool _consumePressed;
     public void OnMove(InputValue value)
     {
         if (!enabled) return;
@@ -37,6 +38,11 @@ public class PlayerInput : MonoBehaviour, IInput
         _attackPressed = value.isPressed;
     }
 
+    public void OnConsume(InputValue value)
+    {
+        if (value.isPressed) _consumePressed = true;
+    }
+
     public bool GetInteractPressed()
     {
         bool pressed = _interactPressed;
@@ -54,6 +60,13 @@ public class PlayerInput : MonoBehaviour, IInput
     {
         bool pressed = _switchWeaponPressed;
         _switchWeaponPressed = false;
+        return pressed;
+    }
+
+    public bool GetConsumePressed()
+    {
+        bool pressed = _consumePressed;
+        _consumePressed = false;
         return pressed;
     }
 }

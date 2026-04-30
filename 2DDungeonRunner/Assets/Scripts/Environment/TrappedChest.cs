@@ -3,19 +3,28 @@ using UnityEngine;
 public class TrappedChest : Chest
 {
     private bool _isLocked = true;
+    [SerializeField] private GameObject _trapEnemy;
 
-    public override void Open()
+    public override void Interact()
     {
-        if (_isLocked)
-            Debug.Log("Chest is locked! Need a key.");
-        else
-            Debug.Log("Locked chest opened!");
+        Unlock();
     }
 
     public void Unlock()
     {
-        _isLocked = false;
-        Debug.Log("Chest unlocked! IT'S A TRAP!");
+        PlayerInventory inventory = GameObject.FindWithTag("Player").GetComponent<PlayerInventory>();
+        if (inventory == null || !inventory.HasKey())
+        {
+            Debug.Log("No key!");
+            return;
+        }
+        inventory.UseKey();
+        GameObject spawned = Instantiate(_trapEnemy, transform.position, Quaternion.identity);
+
+        RoomManager room = FindObjectOfType<RoomManager>();
+        if (room != null)
+            spawned.transform.SetParent(room.transform);
+
         Destroy(gameObject);
     }
 }

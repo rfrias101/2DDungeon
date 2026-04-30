@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InteractionDetector _interaction;
     [SerializeField] private LookAt _lookAt;
     [SerializeField] private WeaponHolder _weaponHolder;
+    [SerializeField] private PlayerInventory _inventory;
 
 
     private IInput _input;
@@ -32,7 +33,10 @@ public class PlayerController : MonoBehaviour
 
         if (_input.GetSwitchWeaponPressed())
             _weaponHolder.SwitchWeapon();
-        
+
+        if (_input.GetConsumePressed())
+            _inventory.UsePotion();
+
     }
 
     private void FixedUpdate()

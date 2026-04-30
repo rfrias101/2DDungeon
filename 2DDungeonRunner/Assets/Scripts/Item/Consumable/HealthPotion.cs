@@ -1,10 +1,17 @@
 using UnityEngine;
 public class HealthPotion : Potion
 {
-    [SerializeField] private float healAmount = 50f;
-
-    public override void Consume()
+    public override void Pickup()
     {
-        Debug.Log($"Health restored by {healAmount}!");
+        PlayerInventory inventory = GameObject.FindWithTag("Player").GetComponent<PlayerInventory>();
+        if (inventory == null) return;
+        if (inventory.GetPotions() >= inventory.GetMaxPotions())
+        {
+            Debug.Log("Can't carry more potions!");
+            return;
+        }
+        inventory.AddPotion();
+        Debug.Log("Health potion picked up!");
+        Destroy(gameObject);
     }
 }
