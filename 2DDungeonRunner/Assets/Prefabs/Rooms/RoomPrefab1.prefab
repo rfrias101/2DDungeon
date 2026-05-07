@@ -957,7 +957,7 @@ MonoBehaviour:
   chestSpawnPoints:
   - {fileID: 8524955447374939934}
   - {fileID: 5642582443300809846}
-  chestSpawnChance: 0.4
+  chestSpawnChance: 0.9
 --- !u!1 &3881178564255679246
 GameObject:
   m_ObjectHideFlags: 0

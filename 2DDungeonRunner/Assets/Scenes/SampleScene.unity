@@ -1036,7 +1036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4453222349850684759, guid: 0d661bb436632d24b94a60ab477b2c70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8351573707773702432, guid: 0d661bb436632d24b94a60ab477b2c70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1301,6 +1301,7 @@ MonoBehaviour:
   _interaction: {fileID: 157825113}
   _lookAt: {fileID: 1485935282}
   _weaponHolder: {fileID: 1485935284}
+  _inventory: {fileID: 0}
 --- !u!50 &1485935280
 Rigidbody2D:
   serializedVersion: 5
@@ -2290,6 +2291,7 @@ MonoBehaviour:
   _interaction: {fileID: 157825113}
   _lookAt: {fileID: 0}
   _weaponHolder: {fileID: 0}
+  _inventory: {fileID: 0}
 --- !u!114 &2109566109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2440,7 +2442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1865320269313456463, guid: 6613ceadf7f7e3e4dac2f6aa9009c90f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5471856041771931408, guid: 6613ceadf7f7e3e4dac2f6aa9009c90f, type: 3}
       propertyPath: playerTransform

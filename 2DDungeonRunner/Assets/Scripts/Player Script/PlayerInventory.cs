@@ -12,6 +12,12 @@ public class PlayerInventory : MonoBehaviour
     {
         _playerHealth = GetComponent<PlayerHealth>();
     }
+
+    private void Start()
+    {
+        UIManager.Instance.UpdateKeys(_keys, maxKeys);
+        UIManager.Instance.UpdatePotions(_potions, maxPotions);
+    }
     public bool HasKey() => _keys > 0;
     public bool HasPotion() => _potions > 0;
 
@@ -19,15 +25,23 @@ public class PlayerInventory : MonoBehaviour
     {
         if (_keys >= maxKeys) { Debug.Log("Can't carry more keys!"); return; }
         _keys++;
+        UIManager.Instance.UpdateKeys(_keys, maxKeys);
     }
 
     public void AddPotion()
     {
         if (_potions >= maxPotions) { Debug.Log("Can't carry more potions!"); return; }
         _potions++;
+        UIManager.Instance.UpdatePotions(_potions, maxPotions);
     }
 
-    public void UseKey() { if (_keys > 0) _keys--; }
+    public void UseKey()
+    {   if (_keys > 0)
+        {
+            _keys--;
+            UIManager.Instance.UpdateKeys(_keys, maxKeys);
+        }
+    }
     public void UsePotion()
     {
         if (_potions <= 0) { Debug.Log("No potions!"); return; }
@@ -37,6 +51,7 @@ public class PlayerInventory : MonoBehaviour
             return;
         }
         _potions--;
+        UIManager.Instance.UpdatePotions(_potions, maxPotions);
         _playerHealth.Heal(potionHealAmount);
         Debug.Log($"Potion used! Health restored by {potionHealAmount}");
     }

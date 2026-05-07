@@ -10,6 +10,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         _dmgFlash = GetComponent<DamageFlash>();
         _currentHealth = maxHealth;
     }
+    void Start()
+    {
+        UIManager.Instance.UpdateHealth(_currentHealth, maxHealth);
+    }
+
     //Call Damage Logic Region
     #region 
     public void TakeDamage(float damage)
@@ -17,10 +22,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         _dmgFlash?.Flash();
         _currentHealth -= damage;
         _currentHealth = Mathf.Max(_currentHealth, 0f);
+        UIManager.Instance.UpdateHealth(_currentHealth, maxHealth);
         Debug.Log($"Player health: {_currentHealth}");
 
         if (IsDead())
+        {
             Debug.Log("Player is dead!");
+            GameManager.Instance.OnPlayerDied();
+        }
     }
     #endregion
 
@@ -36,6 +45,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         _currentHealth += amount;
         _currentHealth = Mathf.Min(_currentHealth, maxHealth);
+        UIManager.Instance.UpdateHealth(_currentHealth, maxHealth);
         Debug.Log($"Player healed! Health: {_currentHealth}");
     }
 
