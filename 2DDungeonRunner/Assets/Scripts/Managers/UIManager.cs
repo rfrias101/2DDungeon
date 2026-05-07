@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI keysText;
     [SerializeField] private TextMeshProUGUI potionsText;
     [SerializeField] private Slider healthBar;
+
+    [SerializeField] private TextMeshProUGUI weaponText;
+
+    [SerializeField] private TextMeshProUGUI playerLvl;
     private void Awake()
     {
         Instance = this;
@@ -27,5 +31,15 @@ public class UIManager : MonoBehaviour
     public void UpdateHealth(float current, float max)
     {
         healthBar.value = current / max;
+    }
+
+    public void UpdateWeapon(string weaponName)
+    {
+        weaponText.text = $"Weapon: {weaponName}";
+    }
+
+    public void UpdateLevel(int level)
+    {
+        playerLvl.text = $"Level: {level}";
     }
 }

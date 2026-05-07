@@ -14,15 +14,20 @@ public class EnemyController : MonoBehaviour, IDamageable
         _dmgflash = GetComponent<DamageFlash>();
         _droppable = GetComponent<Droppable>();
 
+        EnemyData scaledData = EnemyScaling.ScaleData(data, PlayerProgression.Instance.GetLevel());
+
         if (enemyType == EnemyType.Minion)
-            _enemy = new Minion(data);
+        {
+            MinionType randomType = (MinionType)Random.Range(0, 3);
+            _enemy = new Minion(scaledData, randomType);
+        }
         else if (enemyType == EnemyType.Boss)
-            _enemy = new Boss(data);
+            _enemy = new Boss(scaledData);
     }
 
     private void Start()
     {
-        _aiMovement.SetSpeed(data.speed);
+        _aiMovement.SetSpeed(_enemy.GetSpeed());
     }
 
     public void Attack(IDamageable target)

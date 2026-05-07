@@ -6,6 +6,8 @@ public class Sword : MonoBehaviour, IWeapon
     [SerializeField] private float attackDuration = 0.2f; 
     private Collider2D _collider;
 
+    private int _slashCount = 0;
+
     void Awake()
     {
         _collider = GetComponent<Collider2D>();

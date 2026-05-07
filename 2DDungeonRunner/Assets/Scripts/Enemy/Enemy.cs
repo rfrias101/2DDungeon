@@ -6,6 +6,7 @@ public abstract class Enemy : WorldEntity, IDamageable, IAttacker
     protected float maxHealth;
     protected float currentHealth; 
     public float CurrentHealth => currentHealth;
+    public float GetSpeed() => speed;
 
     protected Enemy(EnemyData data)
     {

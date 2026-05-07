@@ -11,6 +11,7 @@ public class WeaponHolder : MonoBehaviour
         sword.SetActive(true);
         gun.SetActive(false);
         _currentWeapon = sword.GetComponent<IWeapon>();
+        UIManager.Instance.UpdateWeapon("Sword");
     }
 
     public void SwitchWeapon()
@@ -20,9 +21,16 @@ public class WeaponHolder : MonoBehaviour
         gun.SetActive(!_isSword);
 
         if (_isSword)
+        {
             _currentWeapon = sword.GetComponent<IWeapon>();
+            UIManager.Instance.UpdateWeapon("Sword");
+        }
+
         else
+        {
             _currentWeapon = gun.GetComponent<IWeapon>();
+            UIManager.Instance.UpdateWeapon("Gun");
+        }
 
         Debug.Log($"Switched to: {(_isSword ? "Sword" : "Gun")}");
     }

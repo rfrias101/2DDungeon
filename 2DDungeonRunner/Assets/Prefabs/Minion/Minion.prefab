@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   data:
-    speed: 10
+    speed: 6
     health: 50
     dmg: 3
   _aiMovement: {fileID: 5471856041771931408}

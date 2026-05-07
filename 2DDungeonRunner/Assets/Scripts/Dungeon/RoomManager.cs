@@ -36,6 +36,8 @@ public class RoomManager : MonoBehaviour
         {
             Debug.Log("Room cleared!");
             exitDoor.Unlock();
+            if (DungeonManager.Instance.GetCurrentFloor() % 10 == 0)
+                PlayerProgression.Instance.LevelUp();
         }
     }
 }
