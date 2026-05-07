@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3018880180047186151}
   - component: {fileID: 8287130671805506205}
   - component: {fileID: 2355472115731419533}
+  - component: {fileID: -5464359182272877137}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -259,6 +260,18 @@ MonoBehaviour:
   - {fileID: 6651319302546274703, guid: 5a2bff20170fb264d9ccb59368618767, type: 3}
   - {fileID: 7920072637078653589, guid: b8f0a63ecbc875c4585f2c249a7b2883, type: 3}
   dropChance: 0.7
+--- !u!114 &-5464359182272877137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4453222349850684759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504852305927af343b4d9b1abe2aba1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6701773554603937043
 GameObject:
   m_ObjectHideFlags: 0

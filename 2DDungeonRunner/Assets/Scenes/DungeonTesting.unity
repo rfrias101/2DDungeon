@@ -293,7 +293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 141767121}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BulletPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 157825111}
   - component: {fileID: 157825112}
   - component: {fileID: 157825113}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Interaction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 319945574}
   - component: {fileID: 319945576}
   - component: {fileID: 319945575}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,6 +555,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   attackDuration: 0.2
+  swordWavePrefab: {fileID: 434719554858021542, guid: 25f9d0191dcf69e45b70311abd67016f, type: 3}
+  fireDamagePerSec: 2
+  fireDuration: 3
 --- !u!1 &437128613
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,7 +569,7 @@ GameObject:
   - component: {fileID: 437128614}
   - component: {fileID: 437128615}
   - component: {fileID: 437128616}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -659,6 +662,9 @@ MonoBehaviour:
   damage: 15
   bulletPrefab: {fileID: 2000050530429192162, guid: dabe1f42374d0124faa74737df234276, type: 3}
   firePoint: {fileID: 141767121}
+  spreadAngle: 15
+  fireDamagePerSec: 2
+  fireDuration: 3
 --- !u!1 &515174855
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,7 +2387,8 @@ GameObject:
   - component: {fileID: 1485935287}
   - component: {fileID: 1485935286}
   - component: {fileID: 1485935288}
-  m_Layer: 0
+  - component: {fileID: 1485935289}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2515,7 +2522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33a23c16128f0b4b82803efbadf27bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 30
 --- !u!114 &1485935279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2687,6 +2694,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aeeab91b162fefc40baded17b67e6c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1485935289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485935273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c77472f1624784eb570bb88569e99f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1753077328
@@ -4864,6 +4883,7 @@ MonoBehaviour:
   - {fileID: 6709192117089884223}
   baseEnemyCount: 3
   maxEnemyCount: 10
+  survivalMaxEnemyCount: 30
   spawnInterval: 2
 --- !u!1 &7693500183601034137
 GameObject:

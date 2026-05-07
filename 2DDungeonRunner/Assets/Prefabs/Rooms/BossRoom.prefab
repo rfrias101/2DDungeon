@@ -947,6 +947,7 @@ MonoBehaviour:
   - {fileID: 7631131713998870044}
   baseEnemyCount: 3
   maxEnemyCount: 10
+  survivalMaxEnemyCount: 30
   spawnInterval: 2
 --- !u!1 &5689167369208471400
 GameObject:

@@ -10,6 +10,13 @@ public class PlayerAbilities : MonoBehaviour
 
     void Awake() => Instance = this;
 
+    private void Start()
+    {
+        HasFireDamage = true;   
+        HasSwordWave = true;
+        HasBulletSpread = true;
+    }
+
     public void UnlockAbilities(int level)
     {
         switch (level)
