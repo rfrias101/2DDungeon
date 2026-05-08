@@ -35,7 +35,7 @@ public class PlayerInput : MonoBehaviour, IInput
 
     public void OnAttack(InputValue value)
     {
-        _attackPressed = value.isPressed;
+        _attackPressed = value.Get<float>() > 0;
     }
 
     public void OnConsume(InputValue value)
@@ -51,9 +51,7 @@ public class PlayerInput : MonoBehaviour, IInput
     }
     public bool GetAttackPressed()
     {
-        bool pressed = _attackPressed;
-        _attackPressed = false;
-        return pressed;
+        return _attackPressed;
     }
 
     public bool GetSwitchWeaponPressed()

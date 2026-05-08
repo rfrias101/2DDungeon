@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] public EnemyData data;
     [SerializeField] private AIMovement _aiMovement;
 
+    private EnemyHealthBar _healthBar;
     private Droppable _droppable;
     private DamageFlash _dmgflash;
     private Enemy _enemy;
@@ -13,6 +14,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         _dmgflash = GetComponent<DamageFlash>();
         _droppable = GetComponent<Droppable>();
+        _healthBar = GetComponentInChildren<EnemyHealthBar>(true);
 
         EnemyData scaledData = EnemyScaling.ScaleData(data, PlayerProgression.Instance.GetLevel());
 
@@ -23,11 +25,14 @@ public class EnemyController : MonoBehaviour, IDamageable
         }
         else if (enemyType == EnemyType.Boss)
             _enemy = new Boss(scaledData);
+
     }
 
     private void Start()
     {
         _aiMovement.SetSpeed(_enemy.GetSpeed());
+        _healthBar?.SetMaxHealth(_enemy.CurrentHealth);
+        Debug.Log($"Health bar found: {_healthBar != null}");
     }
 
     public void Attack(IDamageable target)
@@ -39,6 +44,8 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         _enemy.TakeDamage(damage);
         _dmgflash?.Flash();
+        Debug.Log($"Updating health bar: {_enemy.CurrentHealth}");
+        _healthBar?.UpdateHealth(_enemy.CurrentHealth);
         Debug.Log($"{enemyType} health: {_enemy.CurrentHealth}");
 
         if (_enemy.IsDead())

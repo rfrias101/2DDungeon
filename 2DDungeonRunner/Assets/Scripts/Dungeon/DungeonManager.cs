@@ -26,7 +26,7 @@ public class DungeonManager : MonoBehaviour
     {
         _currentFloor++;
         Debug.Log($"Floor {_currentFloor}");
-
+        UIManager.Instance.UpdateRoomNumber(_currentFloor);
         if (_currentRoom != null)
             Destroy(_currentRoom);
 

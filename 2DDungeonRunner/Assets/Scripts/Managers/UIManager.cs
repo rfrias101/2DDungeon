@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI keysText;
     [SerializeField] private TextMeshProUGUI potionsText;
     [SerializeField] private Slider healthBar;
+    [SerializeField] private TextMeshProUGUI roomNumberText;
 
     [SerializeField] private TextMeshProUGUI weaponText;
 
@@ -41,5 +42,10 @@ public class UIManager : MonoBehaviour
     public void UpdateLevel(int level)
     {
         playerLvl.text = $"Level: {level}";
+    }
+
+    public void UpdateRoomNumber(int floor)
+    {
+        roomNumberText.text = $"Floor: {floor}";
     }
 }

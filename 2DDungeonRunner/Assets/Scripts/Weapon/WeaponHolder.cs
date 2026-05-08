@@ -3,6 +3,8 @@ public class WeaponHolder : MonoBehaviour
 {
     [SerializeField] private GameObject sword;
     [SerializeField] private GameObject gun;
+    [SerializeField] private float fireRate = 0.2f;
+    private float _nextFireTime = 0f;
     private bool _isSword = true;
     private IWeapon _currentWeapon;
 
@@ -37,6 +39,8 @@ public class WeaponHolder : MonoBehaviour
 
     public void Attack()
     {
+        if (Time.time < _nextFireTime) return;
+        _nextFireTime = Time.time + fireRate;
         _currentWeapon?.Attack();
     }
 }

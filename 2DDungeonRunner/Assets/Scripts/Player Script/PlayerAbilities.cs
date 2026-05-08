@@ -12,9 +12,9 @@ public class PlayerAbilities : MonoBehaviour
 
     private void Start()
     {
-        HasFireDamage = true;   
-        HasSwordWave = true;
-        HasBulletSpread = true;
+        //HasFireDamage = true;   
+        //HasSwordWave = true;
+        //HasBulletSpread = true;
     }
 
     public void UnlockAbilities(int level)

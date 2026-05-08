@@ -9,24 +9,35 @@ public class Sword : MonoBehaviour, IWeapon
     [SerializeField] private float fireDuration = 3f;
     private Collider2D _collider;
     private int _slashCount = 0;
-
+    private bool _isAttacking = false;
     void Awake()
     {
         _collider = GetComponent<Collider2D>();
         _collider.enabled = false;
     }
 
+    void OnDisable()
+    {
+        // force disable collider when sword is switched off
+        _collider.enabled = false;
+        _isAttacking = false;
+        StopAllCoroutines();
+    }
+
     public void Attack()
     {
+        if (_isAttacking) return;
         StartCoroutine(AttackRoutine());
     }
 
     private IEnumerator AttackRoutine()
     {
+        _isAttacking = true;
         _slashCount++;
         _collider.enabled = true;
         yield return new WaitForSeconds(attackDuration);
         _collider.enabled = false;
+        _isAttacking = false;
 
         if (PlayerAbilities.Instance.HasSwordWave && _slashCount >= 3)
         {
@@ -37,7 +48,9 @@ public class Sword : MonoBehaviour, IWeapon
 
     private void FireSwordWave()
     {
-        GameObject wave = Instantiate(swordWavePrefab, transform.position, transform.rotation);
+        Transform player = GameObject.FindWithTag("Player").transform;
+        Quaternion rotation = player.rotation * Quaternion.Euler(0, 0, 0);
+        GameObject wave = Instantiate(swordWavePrefab, player.position, rotation);
         wave.GetComponent<SwordWave>().SetDamage(damage / 2f);
         Debug.Log("Sword wave fired!");
     }
