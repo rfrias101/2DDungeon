@@ -464,7 +464,7 @@ MonoBehaviour:
   enemyType: 1
   data:
     speed: 10
-    health: 150
+    health: 300
     dmg: 15
   _aiMovement: {fileID: 1216294891220380645}
 --- !u!114 &1216294891220380645
